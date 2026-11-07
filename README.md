@@ -1,48 +1,41 @@
 # Student Management API
 
-A lightweight RESTful CRUD service developed with Spring Boot, Spring Data JPA, and MySQL, implementing soft-delete patterns and layered architecture.
+A lightweight RESTful CRUD service built with Spring Boot, Spring Data JPA, and MySQL with soft-delete support.
+
+---
 
 ## Tech Stack
-- **Java 17+**
-- **Spring Boot** (Spring Web, Spring Data JPA)
-- **MySQL**
-- **Maven**
+
+| Technology | Purpose |
+| :--- | :--- |
+| Java 17+ | Core Programming Language |
+| Spring Boot | Application Framework |
+| Spring Data JPA / Hibernate | Data Persistence & ORM |
+| MySQL | Relational Database |
+| Maven | Build & Dependency Management |
 
 ---
 
 ## API Endpoints
 
-Base Path: `/api/students`
+Base URL: `http://localhost:8080/api/students`
 
-| Method | Endpoint | Description | Request Body | Status Code |
+| Method | Endpoint | Description | Request Body | Response Status |
 | :--- | :--- | :--- | :--- | :--- |
-| `POST` | `/create` | Create a new student | JSON payload | `201 Created` |
-| `GET` | `/getAll` | Fetch all active students | None | `200 OK` / `404 Not Found` |
-| `GET` | `/get/{id}` | Fetch student by ID | None | `200 OK` / `404 Not Found` |
-| `PUT` | `/update/{id}` | Update student details | JSON payload | `200 OK` / `404 Not Found` |
-| `PATCH` | `/delete-soft/{id}` | Soft delete student | None | `200 OK` |
-| `DELETE` | `/delete/{id}` | Permanently delete student | None | `200 OK` |
+| `POST` | `/create` | Create a new student | JSON | `201 Created` |
+| `GET` | `/getAll` | Get all active students | None | `200 OK` / `404 Not Found` |
+| `GET` | `/get/{id}` | Get student by ID | None | `200 OK` / `404 Not Found` |
+| `PUT` | `/update/{id}` | Update student by ID | JSON | `200 OK` / `404 Not Found` |
+| `PATCH` | `/delete-soft/{id}` | Soft delete student | None | `200 OK` / `404 Not Found` |
+| `DELETE` | `/delete/{id}` | Permanently delete student | None | `200 OK` / `404 Not Found` |
 
 ---
 
-## Usage Guide
+## Request & Response Samples
 
-### 1. Database Setup
-Create database in MySQL:
-```sql
-CREATE DATABASE crud_db;
-```
-Configure credentials in `src/main/resources/application.properties`.
-
-### 2. Run Application
-```bash
-./mvnw spring-boot:run
-```
-Service runs at `http://localhost:8080`.
-
-### 3. Example Request Payloads
-
-**Create Student (`POST /api/students/create`):**
+### 1. Create Student
+- **Endpoint**: `POST /api/students/create`
+- **Request Body**:
 ```json
 {
   "name": "Rohan Jadhav",
@@ -52,16 +45,29 @@ Service runs at `http://localhost:8080`.
   "subject": "Java"
 }
 ```
+- **Response**: `201 Created`
 
-**Update Student (`PUT /api/students/update/{id}`):**
+### 2. Update Student
+- **Endpoint**: `PUT /api/students/update/{id}`
+- **Request Body**:
 ```json
 {
   "name": "Rohan Jadhav",
   "age": 22,
-  "email": "rohan.updated@gmail.com",
+  "email": "rohan.new@gmail.com",
   "rollNo": 101,
   "subject": "Spring Boot"
 }
 ```
+- **Response**: `200 OK`
 
-> **Note:** For `GET`, `DELETE`, and `PATCH` requests, do not send a request body.
+---
+
+## Quick Start
+
+| Step | Action | Command / Detail |
+| :--- | :--- | :--- |
+| **1. Database** | Create MySQL DB | `CREATE DATABASE crud_db;` |
+| **2. Configuration** | Set credentials | Edit `src/main/resources/application.properties` |
+| **3. Run** | Start application | `./mvnw spring-boot:run` |
+| **4. Base URL** | Server port | `http://localhost:8080/api/students` |
