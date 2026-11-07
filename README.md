@@ -1,4 +1,4 @@
-# Student Management API
+# CRUD Application
 
 A lightweight RESTful CRUD service built with Spring Boot, Spring Data JPA, and MySQL with soft-delete support.
 
